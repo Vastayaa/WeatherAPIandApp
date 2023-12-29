@@ -14,14 +14,12 @@ export const App = () => {
       resp.data.state === 200? setWeatherData(resp.data.data) : setIsError(true); setIdError(resp.data.state);
     } catch(e) { setIsError(true); setIdError(599) }
   }
-
-  let onEnter = (e) => { if (e.keyCode === 13 && cityName.length > 0) { fetchProxyAPI() } else { setWeatherData("undefined"); setIsError(false) } };
-
-  let dateBuilder = () => {
+  const dateBuilder = () => {
     let d = new Date(), months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], day = days[d.getDay()], date = d.getDate(), month = months[d.getMonth()], year = d.getFullYear();
     return `${day}, ${date} ${month} ${year}`;
   }
+  const onEnter = (e) => { if (e.keyCode === 13 && cityName.length > 0) { fetchProxyAPI() } else { setWeatherData("undefined"); setIsError(false) } };
 
   return (
     <div className="wrapper">

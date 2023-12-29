@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.post('/api', async(req, res) => {
   try {
-    let resp = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${req.body.text}&appid=${APIurl}`), respJson = await resp.json();
+    const resp = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${req.body.text}&appid=${APIurl}`), respJson = await resp.json();
     res.status(200).json( {state: resp.status, data: respJson} ) } catch (e) { res.status(200).json( {state: 504} ) };
 })
 
